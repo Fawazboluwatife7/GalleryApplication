@@ -1,0 +1,20 @@
+﻿@model IEnumerable<GalleryApp.Models.ImageModel>
+
+<h1>Upload an Image</h1>
+
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+}
+
+<h2>Uploaded Images</h2>
+<div class="image-gallery">
+    @foreach (var image in Model)
+    {
+        <div class="image-item">
+           
+            <img src="@Url.Content("~/uploads/" + image.ImageName)" alt="@image.ImageName" style="max-width: 200px;" />
+        </div>
+    }
+</div>
